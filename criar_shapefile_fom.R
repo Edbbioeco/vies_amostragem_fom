@@ -13,3 +13,10 @@ library(tidyverse)
 ### Importar ----
 
 br <- geobr::read_state()
+
+### Visualizando ----
+
+br
+
+ggplot() +
+  geom_sf(data = br, color = "black")
