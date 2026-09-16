@@ -22,3 +22,11 @@ grade
 
 ggplot() +
   geom_sf(data = grade)
+
+## Registros de ocorrência ----
+
+### Importar ----
+
+gbif <- readr::read_tsv("gbif.csv",
+                        quote = "",
+                        na = "")
