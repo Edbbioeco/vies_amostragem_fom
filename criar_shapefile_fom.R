@@ -52,3 +52,7 @@ fom |> dplyr::glimpse()
 ggplot() +
   geom_sf(data = br, color = "black") +
   geom_sf(data = fom, color = "forestgreen", fill = "forestgreen", alpha = 0.3)
+
+## Exportar ----
+
+fom |> sf::st_write("fom.shp")
