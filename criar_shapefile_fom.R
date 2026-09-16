@@ -36,3 +36,9 @@ veg |> dplyr::glimpse()
 ggplot() +
   geom_sf(data = br, color = "black") +
   geom_sf(data = veg, color = "darkgreen")
+
+# Filtrando apenas para a FOM ----
+
+## Filtrando ----
+
+fom <- veg |> dplyr::filter(nm_pretet == "Floresta Ombrófila Mista")
