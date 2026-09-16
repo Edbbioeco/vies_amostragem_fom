@@ -26,3 +26,13 @@ ggplot() +
 ### Importar ----
 
 veg <- sf::st_read("vege_area.shp")
+
+### Visualizar ----
+
+veg
+
+veg |> dplyr::glimpse()
+
+ggplot() +
+  geom_sf(data = br, color = "black") +
+  geom_sf(data = veg, color = "darkgreen")
