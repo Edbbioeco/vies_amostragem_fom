@@ -20,3 +20,9 @@ br
 
 ggplot() +
   geom_sf(data = br, color = "black")
+
+## Formações vegetais do Brasil ----
+
+### Importar ----
+
+veg <- sf::st_read("vege_area.shp")
