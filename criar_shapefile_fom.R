@@ -14,7 +14,7 @@ library(sf)
 
 br <- geobr::read_state(year = 2025)
 
-### Visualizando ----
+### Visualizar ----
 
 br
 
