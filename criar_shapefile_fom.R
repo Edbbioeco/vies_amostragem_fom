@@ -12,7 +12,7 @@ library(tidyverse)
 
 ### Importar ----
 
-br <- geobr::read_state()
+br <- geobr::read_state(year = 2025)
 
 ### Visualizando ----
 
