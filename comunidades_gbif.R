@@ -30,3 +30,9 @@ ggplot() +
 gbif <- readr::read_tsv("gbif.csv",
                         quote = "",
                         na = "")
+
+### Visualizar ----
+
+gbif
+
+gbif |> dplyr::glimpse()
