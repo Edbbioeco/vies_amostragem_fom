@@ -38,7 +38,7 @@ ggplot() +
 
 # Grade ----
 
-## Recortando a FOM apenas para o Sul ----
+## Recortar a FOM apenas para o Sul ----
 
 fom_recortada <- fom |>
   sf::st_join(br |> dplyr::filter(name_region == "Sul")) |>
