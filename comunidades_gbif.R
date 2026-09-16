@@ -49,3 +49,18 @@ gbif_sf
 
 ggplot() +
   geom_sf(data = gbif_sf)
+
+## Intersectar para a grade da FOM ----
+
+gbif_sf_fom <- gbif_sf |>
+  sf::st_intersection(grade |>
+                        dplyr::rename("geometry" = 32) |>
+                        dplyr::summarise(geometry = geometry |>
+                                           sf::st_union()))
+
+gbif_sf_fom
+
+ggplot() +
+  geom_sf(data = grade) +
+  geom_sf(data = gbif_sf_fom)
+
