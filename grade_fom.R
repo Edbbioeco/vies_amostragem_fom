@@ -20,3 +20,9 @@ br
 
 ggplot() +
   geom_sf(data = br, color = "black")
+
+## Florestas Ombrófilas Mistas ----
+
+### Importar ----
+
+fom <- sf::st_read("fom.shp")
