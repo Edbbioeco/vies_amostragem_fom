@@ -68,3 +68,8 @@ ggplot() +
   geom_sf(data = fom_recortada, color = "forestgreen", fill = "forestgreen",
           alpha = 0.3) +
   geom_sf(data = grade, color = "darkred", fill = NA)
+
+# Exportando ----
+
+grade |> sf::st_write("grade_fom.shp",
+                      append = TRUE)
