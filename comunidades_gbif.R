@@ -36,3 +36,16 @@ gbif <- readr::read_tsv("gbif.csv",
 gbif
 
 gbif |> dplyr::glimpse()
+
+# Recortar para a FOM ----
+
+## Transformar em shapefile ----
+
+gbif_sf <- gbif |>
+  sf::st_as_sf(coords = c("decimalLongitude", "decimalLatitude"),
+               crs = grade |> sf::st_crs())
+
+gbif_sf
+
+ggplot() +
+  geom_sf(data = gbif_sf)
