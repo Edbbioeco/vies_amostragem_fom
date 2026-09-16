@@ -81,3 +81,7 @@ gbif_registros <- gbif_sf_fom |>
                                    "decimalLatitude" = 2))
 
 gbif_registros
+
+## Exportar registros ----
+
+gbif_registros |> writexl::write_xlsx("registros_gbif.xlsx")
