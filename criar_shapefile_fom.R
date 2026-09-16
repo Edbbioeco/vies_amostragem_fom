@@ -39,6 +39,6 @@ ggplot() +
 
 # Filtrando apenas para a FOM ----
 
-## Filtrando ----
+## Filtrar ----
 
 fom <- veg |> dplyr::filter(nm_pretet == "Floresta Ombrófila Mista")
