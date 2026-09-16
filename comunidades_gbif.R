@@ -64,3 +64,20 @@ ggplot() +
   geom_sf(data = grade) +
   geom_sf(data = gbif_sf_fom)
 
+## Criar data frame dos registros ----
+
+gbif_registros <- gbif_sf_fom |>
+  as.data.frame() |>
+  dplyr::select(order, family, species) |>
+  dplyr::filter(!order |> is.na()) |>
+  dplyr::rename("Order" = 1,
+                "Family" = 2,
+                "Species" = 3) |>
+  dplyr::bind_cols(gbif_sf_fom |>
+                     dplyr::filter(!order |> is.na()) |>
+                     sf::st_coordinates() |>
+                     as.data.frame() |>
+                     dplyr::rename("decimalLongitude" = 1,
+                                   "decimalLatitude" = 2))
+
+gbif_registros
