@@ -105,9 +105,6 @@ df_id_fom
 ## Fazer o join para os dados de registro ----
 
 sps_id <- sps_trat |>
-  dplyr::left_join(df_id_fom,
-                   by = "Local") |>
-  dplyr::select(-c(geometry)) |>
   dplyr::mutate(
     Especies = trimws(Especies),
     Especies = dplyr::case_match(
@@ -229,8 +226,7 @@ sps_id <- sps_trat |>
       .default = "Squamata"
       )
   ) |>
-  dplyr::relocate(c(ID, Family), .before = 1) |>
-  dplyr::filter(!ID |> is.na())
+  dplyr::relocate(c(Ordem, Family), .before = 1)
 
 sps_id
 
