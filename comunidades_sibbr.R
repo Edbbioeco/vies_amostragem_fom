@@ -99,3 +99,15 @@ sibbr_sf_fom
 ggplot() +
   geom_sf(data = grade) +
   geom_sf(data = sibbr_sf_fom)
+
+# Data frame dos registtros ----
+
+## Criar o data frame ----
+
+registros_sibbr <- sibbr_sf_fom |>
+  dplyr::mutate(decimalLongitude = sf::st_coordinates(geometry)[, 1],
+                decimalLatitude = sf::st_coordinates(geometry)[, 2]) |>
+  as.data.frame() |>
+  dplyr::select(-geometry)
+
+registros_sibbr
