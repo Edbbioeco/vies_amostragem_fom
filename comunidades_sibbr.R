@@ -111,3 +111,7 @@ registros_sibbr <- sibbr_sf_fom |>
   dplyr::select(-geometry)
 
 registros_sibbr
+
+## Exportar ----
+
+registros_sibbr |> writexl::write_xlsx("registros_sibbr.xlsx")
