@@ -70,3 +70,19 @@ sibbr_trat <- sibbr |>
 sibbr_trat
 
 sibbr_trat |>  dplyr::glimpse()
+
+# Recortar para a FOM ----
+
+## Transformar em shapefile ----
+
+sibbr_sf <- sibbr_trat |>
+  dplyr::filter(!decimalLongitude |> is.na() &
+                  !decimalLatitude |> is.na() &
+                  !Order |> is.na()) |>
+  sf::st_as_sf(coords = c("decimalLongitude", "decimalLatitude"),
+               crs = grade |> sf::st_crs())
+
+sibbr_sf
+
+ggplot() +
+  geom_sf(data = sibbr_sf)
