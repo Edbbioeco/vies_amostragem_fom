@@ -78,3 +78,18 @@ coord_sf
 ggplot() +
   geom_sf(data = grade) +
   geom_sf(data = coord_sf)
+
+# Recortar para a FOM ----
+
+## Intersectando para a FOM ----
+
+coord_sf_fom <- coord_sf |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(geometry = geometry |>
+                                           sf::st_union()))
+
+coord_sf_fom
+
+ggplot() +
+  geom_sf(data = grade) +
+  geom_sf(data = coord_sf_fom)
