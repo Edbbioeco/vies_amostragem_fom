@@ -253,3 +253,7 @@ registros_levantamento <- sps_id |>
 registros_levantamento
 
 registros_levantamento |> dplyr::glimpse()
+
+## Exportar registros ----
+
+registros_levantamento |> writexl::write_xlsx("registros_levantamento.xlsx")
