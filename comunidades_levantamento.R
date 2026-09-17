@@ -48,3 +48,10 @@ sps_trat <- sps |>
   dplyr::filter(Presence == 1)
 
 sps_trat
+
+## Coordenadas dos locais ----
+
+### Importar ----
+
+coord <- readxl::read_xlsx("DADOS COPILADOS DA FOM 2026.xlsx",
+                           sheet = 2)
