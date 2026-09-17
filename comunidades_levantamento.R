@@ -32,3 +32,9 @@ ggplot() +
 ### Importar ----
 
 sps <- readxl::read_xlsx("DADOS COPILADOS DA FOM 2026.xlsx")
+
+### Visualizar ----
+
+sps
+
+sps |> dplyr::glimpse()
