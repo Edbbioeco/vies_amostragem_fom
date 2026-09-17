@@ -20,3 +20,9 @@ grade
 
 ggplot() +
   geom_sf(data = grade)
+
+## Registros de ocorrência ----
+
+### Importar ----
+
+sibbr <- readr::read_csv2("sibbr.csv", quote = ";")
