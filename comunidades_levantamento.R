@@ -55,3 +55,9 @@ sps_trat
 
 coord <- readxl::read_xlsx("DADOS COPILADOS DA FOM 2026.xlsx",
                            sheet = 2)
+
+### Visualizar ----
+
+coord
+
+coord |> dplyr::glimpse()
