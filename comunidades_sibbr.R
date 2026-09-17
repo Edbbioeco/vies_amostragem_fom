@@ -26,3 +26,9 @@ ggplot() +
 ### Importar ----
 
 sibbr <- readr::read_csv2("sibbr.csv", quote = ";")
+
+### Visualizar ----
+
+sibbr
+
+sibbr |>  dplyr::glimpse()
