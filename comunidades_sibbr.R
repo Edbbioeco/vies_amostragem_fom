@@ -86,3 +86,16 @@ sibbr_sf
 
 ggplot() +
   geom_sf(data = sibbr_sf)
+
+## Intersectar para a FOM ----
+
+sibbr_sf_fom <- sibbr_sf |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(geometry = geometry |>
+                                           sf::st_union()))
+
+sibbr_sf_fom
+
+ggplot() +
+  geom_sf(data = grade) +
+  geom_sf(data = sibbr_sf_fom)
