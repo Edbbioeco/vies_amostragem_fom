@@ -38,3 +38,13 @@ sps <- readxl::read_xlsx("DADOS COPILADOS DA FOM 2026.xlsx")
 sps
 
 sps |> dplyr::glimpse()
+
+### Tratar ----
+
+sps_trat <- sps |>
+  tidyr::pivot_longer(cols = dplyr::where(is.numeric),
+                      values_to = "Presence",
+                      names_to = "Local") |>
+  dplyr::filter(Presence == 1)
+
+sps_trat
