@@ -236,14 +236,11 @@ sps_id |> dplyr::glimpse()
 
 registros_levantamento <- sps_id |>
   dplyr::left_join(coord_sf_fom |>
-                     dplyr::mutate(geometry |>
-                                     sf::st_coordinates()) |>
-                     as.data.frame() |>
-                     dplyr::select(-geometry) |>
                      dplyr::mutate(
-                       "decimalLongitude" = `sf::st_coordinates(geometry)`[, 1],
-                       "decimalLatitude" = `sf::st_coordinates(geometry)`[, 2]) |>
-                     dplyr::select(1, 3:4),
+                       decimalLongitude = sf::st_coordinates(geometry)[, 1],
+                       decimalLatitude = sf::st_coordinates(geometry)[, 2],) |>
+                     as.data.frame() |>
+                     dplyr::select(-geometry),
                    by = "Local") |>
   dplyr::select(-c(4:5)) |>
   dplyr::rename("Order" = 1,
