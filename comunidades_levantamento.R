@@ -16,11 +16,11 @@ library(writexl)
 
 ## Grade -----
 
-### Importando ----
+### Importar ----
 
 grade <- sf::st_read("grade_fom.shp")
 
-### Visualizando ----
+### Visualizar ----
 
 grade
 
