@@ -107,7 +107,7 @@ df_id_fom
 sps_id <- sps_trat |>
   dplyr::left_join(df_id_fom,
                    by = "Local") |>
-  dplyr::select(-c(geometry, Local)) |>
+  dplyr::select(-c(geometry)) |>
   dplyr::mutate(
     Especies = trimws(Especies),
     Especies = dplyr::case_match(
