@@ -26,3 +26,9 @@ grade
 
 ggplot() +
   geom_sf(data = grade)
+
+## Registros das espécies -----
+
+### Importar ----
+
+sps <- readxl::read_xlsx("DADOS COPILADOS DA FOM 2026.xlsx")
