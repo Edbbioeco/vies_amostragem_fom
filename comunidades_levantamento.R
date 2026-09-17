@@ -61,3 +61,20 @@ coord <- readxl::read_xlsx("DADOS COPILADOS DA FOM 2026.xlsx",
 coord
 
 coord |> dplyr::glimpse()
+
+### Tratar ----
+
+coord_sf <- coord |>
+  dplyr::mutate(Longitude = Longitude |>
+                  parzer::parse_lon(),
+                Latitude = Latitude |>
+                  parzer::parse_lat()) |>
+  dplyr::select(Local, dplyr::contains("tude")) |>
+  sf::st_as_sf(coords = c("Longitude", "Latitude"),
+               crs = grade |> sf::st_crs())
+
+coord_sf
+
+ggplot() +
+  geom_sf(data = grade) +
+  geom_sf(data = coord_sf)
