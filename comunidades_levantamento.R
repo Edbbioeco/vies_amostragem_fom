@@ -231,3 +231,25 @@ sps_id <- sps_trat |>
 sps_id
 
 sps_id |> dplyr::glimpse()
+
+## Adicionar coordenadas dos locais ----
+
+registros_levantamento <- sps_id |>
+  dplyr::left_join(coord_sf_fom |>
+                     dplyr::mutate(geometry |>
+                                     sf::st_coordinates()) |>
+                     as.data.frame() |>
+                     dplyr::select(-geometry) |>
+                     dplyr::mutate(
+                       "decimalLongitude" = `sf::st_coordinates(geometry)`[, 1],
+                       "decimalLatitude" = `sf::st_coordinates(geometry)`[, 2]) |>
+                     dplyr::select(1, 3:4),
+                   by = "Local") |>
+  dplyr::select(-c(4:5)) |>
+  dplyr::rename("Order" = 1,
+                "Family" = 2,
+                "Species" = 3)
+
+registros_levantamento
+
+registros_levantamento |> dplyr::glimpse()
