@@ -11,3 +11,11 @@ library(readxl)
 library(parzer)
 
 library(writexl)
+
+# Dados ----
+
+## Grade -----
+
+### Importando ----
+
+grade <- sf::st_read("grade_fom.shp")
