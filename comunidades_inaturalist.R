@@ -64,3 +64,19 @@ inaturalist_sf_fom
 ggplot() +
   geom_sf(data = grade) +
   geom_sf(data = inaturalist_sf_fom)
+
+# Data frame dos registtros ----
+
+## Criar o data frame ----
+
+registros_inaturalist <- inaturalist_sf_fom |>
+  dplyr::select(taxon_order_name, taxon_family_name, scientific_name) |>
+  dplyr::rename("Order" = 1,
+                "Family" = 2,
+                "Species" = 3) |>
+  dplyr::mutate(decimalLongitude = sf::st_coordinates(geometry)[, 1],
+                decimalLatitude = sf::st_coordinates(geometry)[, 2]) |>
+  as.data.frame() |>
+  dplyr::select(-geometry)
+
+registros_inaturalist
