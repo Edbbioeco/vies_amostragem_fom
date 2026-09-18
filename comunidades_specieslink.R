@@ -34,3 +34,28 @@ occ_specieslink <- readxl::read_xlsx("specieslink.xlsx")
 occ_specieslink
 
 occ_specieslink |>  dplyr::glimpse()
+
+# Recortar para a FOM ----
+
+## Transformar em shapefile ----
+
+specieslink_sf <- occ_specieslink |>
+  dplyr::mutate(Order = dplyr::case_match(
+    family,
+    "Alligatoridae" ~ "Crocodylia",
+    c("Testudinidae", "Podocnemididae", "Chelidae", "Kinosternidae",
+      "Emydidae", "Cheloniidae") ~ "Testudines",
+    NA ~ NA,
+    .default = "Squamata"),
+    .before = 1) |>
+  dplyr::filter(!longitude |> is.na() &
+                  !latitude |> is.na() &
+                  !Order |> is.na()) |>
+  dplyr::mutate(latitude = latitude |> as.numeric()) |>
+  sf::st_as_sf(coords = c("longitude", "latitude"),
+               crs = grade |> sf::st_crs())
+
+specieslink_sf
+
+ggplot() +
+  geom_sf(data = specieslink_sf)
