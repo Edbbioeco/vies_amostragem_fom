@@ -16,3 +16,9 @@ grade
 
 ggplot() +
   geom_sf(data = grade)
+
+# Rios e Lagos ----
+
+## Importar ----
+
+rioslagos <- sf::st_read("GEOFT_BHO_REF_RIO.shp")
