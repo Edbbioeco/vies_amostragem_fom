@@ -80,3 +80,7 @@ registros_inaturalist <- inaturalist_sf_fom |>
   dplyr::select(-geometry)
 
 registros_inaturalist
+
+## Exportar ----
+
+registros_inaturalist |> writexl::write_xlsx("registros_inaturalist.xlsx")
