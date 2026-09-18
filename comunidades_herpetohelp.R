@@ -92,3 +92,7 @@ registros_herpetohelp <- herpetohelp_sf_fom |>
   dplyr::select(-geometry)
 
 registros_herpetohelp
+
+## Exportar ----
+
+registros_herpetohelp |> writexl::write_xlsx("registros_herpetohelp.xlsx")
