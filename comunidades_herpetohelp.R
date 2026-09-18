@@ -29,3 +29,9 @@ ggplot() +
 
 herpetohelp <- readxl::read_xlsx("herptohelp.xlsx",,
                                  sheet = 2)
+
+### Visualizar ----
+
+herpetohelp
+
+herpetohelp |> dplyr::glimpse()
