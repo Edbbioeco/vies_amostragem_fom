@@ -28,3 +28,9 @@ ggplot() +
 ### Importar ----
 
 occ_specieslink <- readxl::read_xlsx("specieslink.xlsx")
+
+### Visualizar ----
+
+occ_specieslink
+
+occ_specieslink |>  dplyr::glimpse()
