@@ -22,3 +22,9 @@ grade
 
 ggplot() +
   geom_sf(data = grade)
+
+## Registros de ocorrência ----
+
+### Importar ----
+
+occ_specieslink <- readxl::read_xlsx("specieslink.xlsx")
