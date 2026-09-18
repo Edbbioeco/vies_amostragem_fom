@@ -22,3 +22,10 @@ ggplot() +
 ## Importar ----
 
 rioslagos <- sf::st_read("GEOFT_BHO_REF_RIO.shp")
+
+## Visualizar ----
+
+rioslagos
+
+ggplot() +
+  geom_sf(data = rioslagos)
