@@ -35,3 +35,19 @@ inaturalist <- readr::read_csv("inaturalist.csv")
 inaturalist
 
 inaturalist |> dplyr::glimpse()
+
+# Recortar para a FOM ----
+
+## Transformar em shapefile ----
+
+inaturalist_sf <- inaturalist |>
+  dplyr::filter(!longitude |> is.na() &
+                  !latitude |> is.na() &
+                  !taxon_order_name |> is.na()) |>
+  sf::st_as_sf(coords = c("longitude", "latitude"),
+               crs = grade |> sf::st_crs())
+
+inaturalist_sf
+
+ggplot() +
+  geom_sf(data = inaturalist_sf)
