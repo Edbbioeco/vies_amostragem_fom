@@ -59,3 +59,16 @@ specieslink_sf
 
 ggplot() +
   geom_sf(data = specieslink_sf)
+
+## Intersectar para a FOM ----
+
+specieslink_sf_fom <- specieslink_sf |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(geometry = geometry |>
+                                           sf::st_union()))
+
+specieslink_sf_fom
+
+ggplot() +
+  geom_sf(data = grade) +
+  geom_sf(data = specieslink_sf_fom)
