@@ -51,3 +51,16 @@ inaturalist_sf
 
 ggplot() +
   geom_sf(data = inaturalist_sf)
+
+## Intersectar para a FOM ----
+
+inaturalist_sf_fom <- inaturalist_sf |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(geometry = geometry |>
+                                           sf::st_union()))
+
+inaturalist_sf_fom
+
+ggplot() +
+  geom_sf(data = grade) +
+  geom_sf(data = inaturalist_sf_fom)
