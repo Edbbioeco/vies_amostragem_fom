@@ -35,3 +35,32 @@ herpetohelp <- readxl::read_xlsx("herptohelp.xlsx",,
 herpetohelp
 
 herpetohelp |> dplyr::glimpse()
+
+# Recortar para a FOM ----
+
+## Transformar em shapefile ----
+
+herpetohelp_sf <- herpetohelp |>
+  dplyr::mutate(Order = dplyr::case_match(
+    Família,
+    "Alligatoridae" ~ "Crocodylia",
+    c("Testudinidae", "Podocnemididae", "Chelidae", "Kinosternidae",
+      "Emydidae", "Cheloniidae") ~ "Testudines",
+    NA ~ NA,
+    .default = "Squamata"),
+    .before = 1) |>
+  dplyr::filter(Grupo == "Répteis") |>
+  dplyr::filter(!`Longitude no mapa (SIRGAS 2000)` |> is.na() &
+                  !`Latitude no mapa (SIRGAS 2000)` |> is.na() &
+                  !Order |> is.na()) |>
+  dplyr::mutate(`Latitude no mapa (SIRGAS 2000)` = `Latitude no mapa (SIRGAS 2000)` |> as.numeric(),
+                Espécie = Espécie |>
+                  stringr::str_replace("^(\\S+\\s+\\S+)\\s+\\S+(.*)",
+                                       "\\1\\2")) |>
+  sf::st_as_sf(coords = c("Longitude no mapa (SIRGAS 2000)", "Latitude no mapa (SIRGAS 2000)"),
+               crs = grade |> sf::st_crs())
+
+herpetohelp_sf
+
+ggplot() +
+  geom_sf(data = herpetohelp_sf)
