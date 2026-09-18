@@ -10,6 +10,8 @@
 *.tif
 *.shp
 *.shx
-*.dbg
+*.dbf
 *.prj
 *.docx
+*.cpg
+*.bib
