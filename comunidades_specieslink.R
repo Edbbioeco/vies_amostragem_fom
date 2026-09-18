@@ -87,3 +87,7 @@ registros_specieslik <- specieslink_sf_fom |>
   dplyr::select(-geometry)
 
 registros_specieslik
+
+## Exportar ----
+
+registros_specieslik |> writexl::write_xlsx("registros_specieslik.xlsx")
