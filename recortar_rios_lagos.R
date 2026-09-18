@@ -9,3 +9,10 @@ library(tidyverse)
 ## Importar ----
 
 grade <- sf::st_read("grade.shp")
+
+## Visualizar ----
+
+grade
+
+ggplot() +
+  geom_sf(data = grade)
