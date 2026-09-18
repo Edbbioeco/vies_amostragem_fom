@@ -29,3 +29,12 @@ rioslagos
 
 ggplot() +
   geom_sf(data = rioslagos)
+
+# Recortar para a área da FOM ----
+
+## Recortar ----
+
+rios_fom <- rioslagos |>
+  sf::st_transform(crs = grade |> sf::st_crs()) |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(sf::st_union(geometry)))
