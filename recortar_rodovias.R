@@ -55,3 +55,7 @@ rodovias_fom
 ggplot() +
   geom_sf(data = rodovias_fom, color = "red") +
   geom_sf(data = grade, fill = "transparent")
+
+## Exportar ----
+
+rodovias_fom |> sf::st_write("./gazetteers/rodovias.shp")
