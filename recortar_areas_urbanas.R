@@ -39,3 +39,11 @@ ggplot() +
 areas_urb_fom <- areas_urb |>
   sf::st_intersection(grade |>
                         dplyr::summarise(sf::st_union(geometry)))
+
+## Visualizar ----
+
+areas_urb_fom
+
+ggplot() +
+  geom_sf(data = areas_urb_fom, color = "red") +
+  geom_sf(data = grade, fill = "transparent")
