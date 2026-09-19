@@ -31,3 +31,11 @@ areas_urb
 
 ggplot() +
   geom_sf(data = areas_urb)
+
+# Recortar para a área da FOM ----
+
+## Recortar ----
+
+areas_urb_fom <- areas_urb |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(sf::st_union(geometry)))
