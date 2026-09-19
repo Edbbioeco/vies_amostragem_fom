@@ -32,3 +32,10 @@ uni_con
 ggplot() +
   geom_sf(data = uni_con)
 
+# Recortar para a área da FOM ----
+
+## Recortar ----
+
+uni_con_fom <- uni_con |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(sf::st_union(geometry)))
