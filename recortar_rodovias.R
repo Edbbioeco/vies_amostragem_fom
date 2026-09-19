@@ -39,3 +39,11 @@ rodovias
 
 ggplot() +
   geom_sf(data = rodovias)
+
+# Recortar rodovias para a área da FOM ----
+
+## Recortar ----
+
+rodovias |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(sf::st_union(geometry)))
