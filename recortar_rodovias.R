@@ -47,3 +47,11 @@ ggplot() +
 rodovias_fom <- rodovias |>
   sf::st_intersection(grade |>
                         dplyr::summarise(sf::st_union(geometry)))
+
+## Visualizar ----
+
+rodovias_fom
+
+ggplot() +
+  geom_sf(data = rodovias, color = "red") +
+  geom_sf(data = rodovias, fill = "transparent")
