@@ -27,7 +27,8 @@ uni_con <- geobr::read_conservation_units(date = 202503)
 
 ## Visualizar ----
 
-areas_urb
+uni_con
 
 ggplot() +
-  geom_sf(data = areas_urb)
+  geom_sf(data = uni_con)
+
