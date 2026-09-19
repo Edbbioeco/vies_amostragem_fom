@@ -24,3 +24,10 @@ ggplot() +
 ## Importar ----
 
 uni_con <- geobr::read_conservation_units(date = 202503)
+
+## Visualizar ----
+
+areas_urb
+
+ggplot() +
+  geom_sf(data = areas_urb)
