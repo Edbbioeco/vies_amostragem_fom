@@ -47,3 +47,7 @@ areas_urb_fom
 ggplot() +
   geom_sf(data = areas_urb_fom, color = "red") +
   geom_sf(data = grade, fill = "transparent")
+
+## Exportar ----
+
+areas_urb_fom |> sf::st_write("./gazetteers/areas_urb.shp")
