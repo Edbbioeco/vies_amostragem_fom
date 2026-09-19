@@ -39,3 +39,11 @@ ggplot() +
 uni_con_fom <- uni_con |>
   sf::st_intersection(grade |>
                         dplyr::summarise(sf::st_union(geometry)))
+
+## Visualizar ----
+
+uni_con_fom
+
+ggplot() +
+  geom_sf(data = uni_con_fom, color = "red") +
+  geom_sf(data = grade, fill = "transparent")
