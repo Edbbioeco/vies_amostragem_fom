@@ -44,6 +44,6 @@ ggplot() +
 
 ## Recortar ----
 
-rodovias |>
+rodovias_fom <- rodovias |>
   sf::st_intersection(grade |>
                         dplyr::summarise(sf::st_union(geometry)))
