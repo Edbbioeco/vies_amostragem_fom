@@ -38,3 +38,11 @@ rios_fom <- rioslagos |>
   sf::st_transform(crs = grade |> sf::st_crs()) |>
   sf::st_intersection(grade |>
                         dplyr::summarise(sf::st_union(geometry)))
+
+## Visualizar ----
+
+rios_fom
+
+ggplot() +
+  geom_sf(data = rios_fom, color = "blue") +
+  geom_sf(data = grade, fill = "transparent")
