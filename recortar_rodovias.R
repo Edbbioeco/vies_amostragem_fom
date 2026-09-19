@@ -53,5 +53,5 @@ rodovias_fom <- rodovias |>
 rodovias_fom
 
 ggplot() +
-  geom_sf(data = rodovias, color = "red") +
-  geom_sf(data = rodovias, fill = "transparent")
+  geom_sf(data = rodovias_fom, color = "red") +
+  geom_sf(data = grade, fill = "transparent")
