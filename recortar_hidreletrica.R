@@ -34,3 +34,10 @@ hid <- purrr::map_dfr(
 
   },
   .progress = TRUE)
+
+## Visualizar ----
+
+hid
+
+ggplot() +
+  geom_sf(data = hid)
