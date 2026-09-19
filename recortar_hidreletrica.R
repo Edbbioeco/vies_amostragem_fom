@@ -41,3 +41,11 @@ hid
 
 ggplot() +
   geom_sf(data = hid)
+
+# Recortar para a área da FOM ----
+
+## Recportar ----
+
+hid_fom <- hid |>
+  sf::st_intersection(grade |>
+                        dplyr::summarise(sf::st_union(geometry)))
