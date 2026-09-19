@@ -49,3 +49,11 @@ ggplot() +
 hid_fom <- hid |>
   sf::st_intersection(grade |>
                         dplyr::summarise(sf::st_union(geometry)))
+
+## Visualizar ----
+
+hid_fom
+
+ggplot() +
+  geom_sf(data = hid_fom, color = "red") +
+  geom_sf(data = grade, fill = "transparent")
