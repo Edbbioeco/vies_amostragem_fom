@@ -46,3 +46,9 @@ rios_fom
 ggplot() +
   geom_sf(data = rios_fom, color = "blue") +
   geom_sf(data = grade, fill = "transparent")
+
+## Exportar ----
+
+dir.create("./gazetteers")
+
+rios_fom |> sf::st_write("./gazetteers/rios.shp")
