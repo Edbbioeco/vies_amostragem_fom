@@ -57,3 +57,7 @@ hid_fom
 ggplot() +
   geom_sf(data = hid_fom, color = "red") +
   geom_sf(data = grade, fill = "transparent")
+
+## Exportar ----
+
+hid_fom |> sf::st_write("./gazetteers/hid.shp")
