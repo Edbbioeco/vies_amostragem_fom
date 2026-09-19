@@ -16,3 +16,19 @@ grade
 
 ggplot() +
   geom_sf(data = grade)
+
+# Rodovias ----
+
+## Importar ----
+
+rodovias <- purrr::map_dfr(
+  c("FEDERAL", "ESTADUAL"),
+  \(tipo){
+
+    sf::st_read(paste0("GEOFT_TRECHO_RODOVIARIO_",
+                       tipo,
+                       ".shp")) |>
+      dplyr::mutate(Tipo = tipo |> stringr::str_to_title())
+
+    },
+  .progress = TRUE)
