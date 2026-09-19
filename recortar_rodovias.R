@@ -32,3 +32,10 @@ rodovias <- purrr::map_dfr(
 
     },
   .progress = TRUE)
+
+## Visualizar ----
+
+rodovias
+
+ggplot() +
+  geom_sf(data = rodovias)
