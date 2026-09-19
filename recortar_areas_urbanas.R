@@ -4,6 +4,8 @@ library(sf)
 
 library(tidyverse)
 
+library(geobr)
+
 # Grade da FOM ----
 
 ## Importar ----
