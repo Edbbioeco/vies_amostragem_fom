@@ -47,3 +47,7 @@ uni_con_fom
 ggplot() +
   geom_sf(data = uni_con_fom, color = "red") +
   geom_sf(data = grade, fill = "transparent")
+
+## Exportar ----
+
+uni_con_fom |> sf::st_write("./gazetteers/uni_con.shp")
