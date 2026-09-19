@@ -16,3 +16,9 @@ grade
 
 ggplot() +
   geom_sf(data = grade)
+
+# Áreas urbanas ----
+
+## Importar ----
+
+areas_urb <- geobr::read_urban_area(year = 2022)
