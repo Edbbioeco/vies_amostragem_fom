@@ -62,3 +62,19 @@ registros <- purrr::map_dfr(
 registros
 
 registros |> dplyr::glimpse()
+
+### Transformar um shapefile ----
+
+registros_sf <- registros |>
+  dplyr::filter(!decimalLongitude |> is.na() &
+                  !decimalLatitude |> is.na()) |>
+  sf::st_as_sf(coords = paste0("decimal",
+                               c("Longitude",
+                                 "Latitude")),
+               crs = fom |> sf::st_crs())
+
+registros_sf
+
+ggplot() +
+  geom_sf(data = fom, color = "forestgreen", fill = "forestgreen") +
+  geom_sf(data = registros_sf, alpha = 0.5, size = 1)
