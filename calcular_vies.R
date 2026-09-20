@@ -56,7 +56,9 @@ gaz <- purrr::map(
   list.files(path = "./gazetteers/",
              pattern = ".shp$",
              full.names = TRUE),
-  sf::st_read,
+  ~sf::st_read(.x) |>
+    sf::st_transform(crs = 4674) |>
+    terra::vect(),
   .progress = TRUE) |>
   setNames(c("Urban areas",
              "Hidreletric plants",
