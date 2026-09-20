@@ -58,3 +58,9 @@ gaz <- purrr::map(
              "Highways",
              "Conservation units"))
 
+## Visualizar ----
+
+gaz
+
+purrr::map(gaz,
+           ~ ggplot() + geom_sf(data = .x))
