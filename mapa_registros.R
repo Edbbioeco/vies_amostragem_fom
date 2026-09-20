@@ -114,3 +114,8 @@ ggplot() +
         legend.position = "bottom",
         panel.border = element_rect(color = "black", linewidth = 1)) +
   ggview::canvas(height = 10, width = 12)
+
+## Exportar ----
+
+ggsave(filename = "mapa_registros.png",
+       height = 10, width = 12)
