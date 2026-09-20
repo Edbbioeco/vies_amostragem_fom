@@ -90,6 +90,19 @@ ggplot() +
 
 # Calcular viés ----
 
+## Criar molde ----
+
+vetor <- grade |> terra::vect()
+
+fom_raster <- terra::rast(terra::ext(vetor),
+                          resolution = (1 / 111.3194),
+                          crs = "EPSG:4326") %>%
+  terra::rasterize(vetor, y = ., field = 1)
+
+fom_raster
+
+fom_raster |> plot()
+
 ## Calcular viés por ordem ----
 
 vies_ordens <- purrr::map(
