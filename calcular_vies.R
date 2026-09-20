@@ -187,3 +187,18 @@ df_pesos <- purrr::imap_dfr(
   .progress = TRUE)
 
 df_pesos
+
+### Criar modelo ANOVA ----
+
+anovas_ordem <- purrr::map(
+  c("Crocodylia", "Testudines", "Squamata"),
+  \(ordem){
+
+    lm(Weight ~ Factor,
+       data = df_pesos |>
+         dplyr::filter(Ordem == ordem))
+
+    },
+  .progress = TRUE)
+
+anovas_ordem
