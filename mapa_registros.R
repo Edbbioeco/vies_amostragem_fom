@@ -78,3 +78,39 @@ registros_sf
 ggplot() +
   geom_sf(data = fom, color = "forestgreen", fill = "forestgreen") +
   geom_sf(data = registros_sf, alpha = 0.5, size = 1)
+
+# Mapa dos registros ----
+
+## Criar mapa ----
+
+ggplot() +
+  geom_sf(data = br,
+          aes(color = "Brazil", fill = "Brazil"),
+          linewidth = 1) +
+  geom_sf(data = fom,
+          aes(color = "FOM", fill = "FOM")) +
+  geom_sf(data = br, color = "black", fill = "transparent",
+          linewidth = 1) +
+  geom_sf(data = registros_sf,
+          aes(color = "Species records", fill = "Species records"),
+          shape = 21,
+          size = 2) +
+  scale_color_manual(values = c("Brazil" = "black",
+                                "FOM" = "forestgreen",
+                                "Species records" = "black"),
+                     breaks = c("Brazil", "FOM", "Species records")) +
+  scale_fill_manual(values = c("Brazil" = "gray",
+                               "FOM" = "forestgreen",
+                               "Species records" = "black"),
+                     breaks = c("Brazil", "FOM", "Species records")) +
+  coord_sf(xlim = c(-54.03497, -48.34859),
+           ylim = c(-30.25525, -23.36159),
+           label_graticule = "NSWE") +
+  labs(color = NULL,
+       fill = NULL) +
+  theme_bw() +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        panel.border = element_rect(color = "black", linewidth = 1)) +
+  ggview::canvas(height = 10, width = 12)
