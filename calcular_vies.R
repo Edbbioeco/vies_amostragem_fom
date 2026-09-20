@@ -125,3 +125,10 @@ vies_ordens <- purrr::map(
   setNames(c("Crocodylia", "Testudines", "Squamata"))
 
 vies_ordens
+
+## Salvar modelos ----
+
+purrr::imap(
+  vies_ordens,
+  ~.x |> readr::write_rds(file = paste0("modelo_vies_", .y, ".rds"))
+)
