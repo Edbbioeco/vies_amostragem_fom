@@ -48,6 +48,12 @@ registros
 
 registros |> dplyr::glimpse()
 
+# Grade da FOM ----
+
+## Importar ----
+
+grade <- sf::st_read("grade_fom.shp")
+
 # Gazetteers ----
 
 ## Importar ----
