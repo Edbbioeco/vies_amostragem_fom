@@ -41,3 +41,20 @@ registros <- purrr::map_dfr(
   .progress = TRUE) |>
   dplyr::filter(!decimalLongitude |> is.na() &
                   !decimalLatitude |> is.na())
+
+# Gazetteers ----
+
+## Importar ----
+
+gaz <- purrr::map(
+  list.files(path = "./gazetteers/",
+             pattern = ".shp$",
+             full.names = TRUE),
+  sf::st_read,
+  .progress = TRUE) |>
+  setNames(c("Urban areas",
+             "Hidreletric plants",
+             "Rivers",
+             "Highways",
+             "Conservation units"))
+
