@@ -12,6 +12,8 @@ library(sampbias)
 
 library(performance)
 
+library(broom)
+
 library(ggview)
 
 library(segmented)
