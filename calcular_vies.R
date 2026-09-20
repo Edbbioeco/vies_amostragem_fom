@@ -122,7 +122,10 @@ vies_ordens <- purrr::map(
                                  terrestrial = TRUE,
                                  inp_raster = fom_raster |>
                                    terra::unwrap(),
-                                 restrict_sample = grade)
+                                 restrict_sample = grade |>
+                                   dplyr::summarise(
+                                     sf::st_union(geometry)) |>
+                                   terra::vect)
 
       },
     registros = registros,
