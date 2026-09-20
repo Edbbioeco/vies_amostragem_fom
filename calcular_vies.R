@@ -75,6 +75,12 @@ gaz
 purrr::map(gaz,
            ~ plot(.x))
 
+## Grade da FOM ----
+
+### Importar ----
+
+grade <- sf::st_read("grade_fom.shp")
+
 # Calcular viés ----
 
 ## Calcular viés por ordem ----
