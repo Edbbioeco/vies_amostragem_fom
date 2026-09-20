@@ -148,7 +148,19 @@ purrr::imap(
 
 modelos_vies <- purrr::map(
   c("Crocodylia", "Testudines", "Squamata"),
-  ~readr::read_rds(file = paste0("modelo_vies_", .x, ".rds")),
+  \(ordem){
+
+    modelo <- readr::read_rds(file = paste0("modelo_vies_", ordem, ".rds"))
+
+    modelo$summa$extent <- modelo$summa$extent |> terra::ext()
+
+    modelo$occurrences <- modelo$occurrences |> terra::unwrap()
+
+    modelo$distance_rasters <- modelo$distance_rasters |> terra::unwrap()
+
+    modelo
+
+    },
   .progress = TRUE) |>
   setNames(c("Crocodylia", "Testudines", "Squamata"))
 
