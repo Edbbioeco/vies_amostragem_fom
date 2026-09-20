@@ -16,6 +16,8 @@ library(broom)
 
 library(flextable)
 
+library(ggbeeswarm)
+
 library(ggview)
 
 library(segmented)
