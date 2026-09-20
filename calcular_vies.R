@@ -203,3 +203,48 @@ anovas_ordem <- purrr::map(
   setNames(c("Crocodylia", "Testudines", "Squamata"))
 
 anovas_ordem
+
+### Performance dos modelos ----
+
+purrr::map(
+  anovas_ordem,
+  \(modelo){
+
+    modelo |>
+      performance::check_model(check = c("qq",
+                                         "normality"))
+
+    modelo |> performance::check_normality() |> print()
+
+    modelo |> performance::check_heteroscedasticity() |> print()
+
+    },
+  .progress = TRUE)
+
+### Estatísticas ----
+
+anova_estatistica <- purrr::imap_dfr(
+  anovas_ordem,
+  \(modelo, ordem){
+
+    modelo |>
+      anova() |>
+      broom::tidy() |>
+      dplyr::mutate(Order = ordem,
+                    .before = 1)
+
+    },
+  .progress = TRUE) |>
+  dplyr::filter(term == "Factor") |>
+  dplyr::select(-c(2, 4:5)) |>
+  dplyr::relocate(df, .before = 4) |>
+  dplyr::rename("F" = 2,
+                "p value" = 4) |>
+  dplyr::mutate(`p value` = dplyr::case_when(
+
+    `p value` < 0.01 ~ "< 0.01",
+    .default = `p value` |> as.character()
+
+  ))
+
+anova_estatistica
