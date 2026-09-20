@@ -132,3 +132,13 @@ purrr::imap(
   vies_ordens,
   ~.x |> readr::write_rds(file = paste0("modelo_vies_", .y, ".rds"))
 )
+
+## Importar modelos ----
+
+modelos_vies <- purrr::map(
+  c("Crocodylia", "Testudines", "Squamata"),
+  ~readr::read_rds(file = paste0("modelo_vies_", .x, ".rds")),
+  .progress = TRUE) |>
+  setNames(c("Crocodylia", "Testudines", "Squamata"))
+
+modelos_vies
