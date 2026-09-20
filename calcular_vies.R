@@ -97,7 +97,7 @@ ggplot() +
 vetor <- grade |> terra::vect()
 
 fom_raster <- terra::rast(terra::ext(vetor),
-                          resolution = (1 / 111.3194),
+                          resolution = (10 / 111.3194),
                           crs = "EPSG:4326") %>%
   terra::rasterize(vetor, y = ., field = 1)
 
@@ -107,8 +107,6 @@ fom_raster |> plot()
 
 ## Calcular viés por ordem ----
 
-mirai::daemons(6)
-
 vies_ordens <- purrr::map(
   c("Crocodylia", "Testudines", "Squamata"),
   purrr::in_parallel(
@@ -117,26 +115,15 @@ vies_ordens <- purrr::map(
 
       registros |>
         dplyr::filter(Order == ordem) |>
-        sampbias::calculate_bias(gaz = gaz |>
-                                   purrr::map(~terra::unwrap(.x)),
-                                 terrestrial = TRUE,
-                                 inp_raster = fom_raster |>
-                                   terra::unwrap(),
-                                 restrict_sample = grade |>
-                                   dplyr::summarise(
-                                     sf::st_union(geometry)) |>
-                                   terra::vect)
+        sampbias::calculate_bias(gaz = gaz,
+                                 inp_raster = fom_raster,
+                                 res = (10 / 111.3194),
+                                 terrestrial = TRUE)
 
-      },
-    registros = registros,
-    gaz = gaz |> purrr::map(~terra::wrap(.x)),
-    fom_raster = fom_raster |> terra::wrap(),
-    grade = grade
+      }
 
     ),
   .progress = TRUE) |>
   setNames(c("Crocodylia", "Testudines", "Squamata"))
 
 vies_ordens
-
-mirai::daemons(0)
