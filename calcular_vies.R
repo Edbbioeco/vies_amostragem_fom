@@ -262,3 +262,32 @@ anova_estatistica_flex
 
 anova_estatistica_flex |>
   flextable::save_as_docx(path = "tabela_anova_pesos.docx")
+
+### Gráfico ----
+
+df_pesos |>
+  dplyr::mutate(Ordem = Ordem |>
+                  forcats::fct_relevel(c("Crocodylia",
+                                         "Testudines",
+                                         "Squamata"))) |>
+  ggplot(aes(Factor, Weight)) +
+  ggbeeswarm::geom_quasirandom() +
+  facet_wrap(~Ordem, ncol = 1, scales = "free_y") +
+  labs(x = "Gazetteer") +
+  theme_bw() +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        axis.text.x = element_text(size = 15, color = "black"),
+        axis.title = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.title = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        strip.text = element_text(size = 30, color = "black"),
+        strip.background = element_rect(color = "black",
+                                        linewidth = 1),
+        panel.background = element_rect(linewidth = 1,
+                                        color = "black"),
+        plot.title = element_text(size = 20, color = "black"),
+        plot.subtitle = element_text(size = 17.5, color = "black")) +
+  ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "grafico_distribuição_pesos.png", height = 10, width = 12)
