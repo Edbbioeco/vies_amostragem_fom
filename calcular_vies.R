@@ -92,6 +92,7 @@ vies_ordens <- purrr::map(
       }
 
     ),
-  .progress = TRUE)
+  .progress = TRUE) |>
+  setNames(c("Crocodylia", "Testudines", "Squamata"))
 
 vies_ordens
