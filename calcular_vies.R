@@ -6,6 +6,8 @@ library(readxl)
 
 library(sf)
 
+library(terra)
+
 library(sampbias)
 
 library(performance)
@@ -15,8 +17,6 @@ library(ggview)
 library(segmented)
 
 library(flextable)
-
-library(terra)
 
 library(tidyterra)
 
