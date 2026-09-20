@@ -199,6 +199,7 @@ anovas_ordem <- purrr::map(
          dplyr::filter(Ordem == ordem))
 
     },
-  .progress = TRUE)
+  .progress = TRUE) |>
+  setNames(c("Crocodylia", "Testudines", "Squamata"))
 
 anovas_ordem
