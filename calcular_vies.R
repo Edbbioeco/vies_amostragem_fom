@@ -70,3 +70,26 @@ gaz
 
 purrr::map(gaz,
            ~ ggplot() + geom_sf(data = .x))
+
+# Calcular viés ----
+
+## Calcular viés por ordem ----
+
+vies_ordens <- purrr::map(
+  c("Crocodylia", "Testudines", "Squamata"),
+  purrr::in_parallel(
+
+    \(ordem){
+
+      registros |>
+        dplyr::filter(Order == ordem) |>
+        sampbias::calculate_bias(gaz = gaz,
+                                 res = (1 / 111.3194),
+                                 terrestrial = TRUE)
+
+      }
+
+    ),
+  .progress = TRUE)
+
+vies_ordens
