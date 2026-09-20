@@ -71,7 +71,7 @@ gaz <- purrr::map(
 gaz
 
 purrr::map(gaz,
-           ~ ggplot() + geom_sf(data = .x))
+           ~ plot(x))
 
 # Calcular viés ----
 
