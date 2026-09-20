@@ -81,6 +81,13 @@ purrr::map(gaz,
 
 grade <- sf::st_read("grade_fom.shp")
 
+### Visualizar ----
+
+grade
+
+ggplot() +
+  geom_sf(data = grade)
+
 # Calcular viés ----
 
 ## Calcular viés por ordem ----
