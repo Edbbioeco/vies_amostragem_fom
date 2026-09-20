@@ -90,4 +90,4 @@ registros_specieslik
 
 ## Exportar ----
 
-registros_specieslik |> writexl::write_xlsx("registros_specieslik.xlsx")
+registros_specieslik |> writexl::write_xlsx("registros_specieslink.xlsx")
