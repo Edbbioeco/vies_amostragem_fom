@@ -166,3 +166,24 @@ modelos_vies <- purrr::map(
 
 modelos_vies
 
+## Pesos por modelo ----
+
+### Criar data frame ----
+
+df_pesos <- purrr::imap_dfr(
+  modelos_vies,
+  \(modelo, ordem){
+
+    modelo$bias_estimate |>
+      tidyr::pivot_longer(cols = dplyr::contains("w_"),
+                          names_to = "Factor",
+                          values_to = "Weight") |>
+      dplyr::mutate(Factor = Factor |>
+                      stringr::str_remove("w_") |>
+                      stringr::str_replace_all("\\.", " "),
+                    Ordem = ordem)
+
+  },
+  .progress = TRUE)
+
+df_pesos
