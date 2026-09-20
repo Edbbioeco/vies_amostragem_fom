@@ -130,8 +130,19 @@ vies_ordens
 
 purrr::imap(
   vies_ordens,
-  ~.x |> readr::write_rds(file = paste0("modelo_vies_", .y, ".rds"))
-)
+  \(modelo, ordem){
+
+    modelo$summa$extent <- modelo$summa$extent |> as.vector()
+
+    modelo$occurrences <- modelo$occurrences |> terra::wrap()
+
+    modelo$distance_rasters <- modelo$distance_rasters |> terra::wrap()
+
+    modelo |>
+      readr::write_rds(file = paste0("modelo_vies_", ordem, ".rds"))
+
+    },
+  .progress = TRUE)
 
 ## Importar modelos ----
 
@@ -142,3 +153,4 @@ modelos_vies <- purrr::map(
   setNames(c("Crocodylia", "Testudines", "Squamata"))
 
 modelos_vies
+
