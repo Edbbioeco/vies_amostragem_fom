@@ -248,3 +248,14 @@ anova_estatistica <- purrr::imap_dfr(
   ))
 
 anova_estatistica
+
+### Tabela flextable ----
+
+anova_estatistica_flex <- anova_estatistica |>
+  flextable::flextable() |>
+  flextable::align(align = "center", part = "all")
+
+anova_estatistica_flex
+
+anova_estatistica_flex |>
+  flextable::save_as_docx(path = "tabela_anova_pesos.docx")
