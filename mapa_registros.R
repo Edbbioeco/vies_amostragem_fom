@@ -28,3 +28,12 @@ ggplot() +
 ### Importar ----
 
 fom <- sf::st_read("fom.shp")
+
+### Visualizar ----
+
+fom
+
+ggplot() +
+  geom_sf(data = br) +
+  geom_sf(data = fom, color = "forestgreen", fill = "forestgreen")
+
