@@ -38,4 +38,6 @@ registros <- purrr::map_dfr(
     readxl::read_xlsx(paste0("registros_", fonte, ".xlsx"))
 
   },
-  .progress = TRUE)
+  .progress = TRUE) |>
+  dplyr::filter(!decimalLongitude |> is.na() &
+                  !decimalLatitude |> is.na())
