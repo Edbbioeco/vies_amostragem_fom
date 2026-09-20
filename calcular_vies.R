@@ -14,11 +14,11 @@ library(performance)
 
 library(broom)
 
+library(flextable)
+
 library(ggview)
 
 library(segmented)
-
-library(flextable)
 
 library(tidyterra)
 
