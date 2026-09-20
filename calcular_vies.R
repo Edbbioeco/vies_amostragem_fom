@@ -73,7 +73,7 @@ gaz <- purrr::map(
 gaz
 
 purrr::map(gaz,
-           ~ plot(x))
+           ~ plot(.x))
 
 # Calcular viés ----
 
