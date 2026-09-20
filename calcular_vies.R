@@ -42,6 +42,12 @@ registros <- purrr::map_dfr(
   dplyr::filter(!decimalLongitude |> is.na() &
                   !decimalLatitude |> is.na())
 
+## Visualizar ----
+
+registros
+
+registros |> dplyr::glimpse()
+
 # Gazetteers ----
 
 ## Importar ----
