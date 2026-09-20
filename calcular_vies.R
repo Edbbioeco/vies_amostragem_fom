@@ -245,7 +245,8 @@ anova_estatistica <- purrr::imap_dfr(
     `p value` < 0.01 ~ "< 0.01",
     .default = `p value` |> as.character()
 
-  ))
+  ),
+               `F` = `F` |> round(2))
 
 anova_estatistica
 
