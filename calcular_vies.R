@@ -498,3 +498,29 @@ df_sr |>
   ggview::canvas(height = 10, width = 12)
 
 ggsave(filename = "grafico_sampling_rate.png", height = 10, width = 12)
+
+## Projeção espacial ----
+
+### Calcular projeção ----
+
+raster_proj <- purrr::map(
+  modelos_vies,
+  ~.x |>
+    sampbias::project_bias() |>
+    terra::mask(grade |>
+                  dplyr::summarise(sf::st_union(geometry))) |>
+    terra::crop(grade |>
+                  dplyr::summarise(sf::st_union(geometry))),
+  .progress = TRUE)
+
+raster_proj
+
+purrr::map(
+  raster_proj,
+  ~.x |>
+    terra::set.names(. |>
+                       terra::names() |>
+                       stringr::str_replace("_", " ")),
+  .progress = TRUE)
+
+raster_proj
