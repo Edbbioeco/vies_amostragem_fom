@@ -383,14 +383,14 @@ modelos_seg
 
 ### Estatísticas do modelo ----
 
-purrr::imap_dfr(
+purrr::imap(
   modelos_seg,
   \(modelo, nome){
 
+    message(nome)
+
     modelo |>
-      summary() |>
-      broom::tidy() |>
-      mutate(id = nome, .before = 1)
+      summary()
 
     },
   .progress = TRUE)
