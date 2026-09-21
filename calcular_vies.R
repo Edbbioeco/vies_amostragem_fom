@@ -363,11 +363,12 @@ modelos_seg <- purrr::map(
       df_sr$Factor |> unique(),
       \(gaz){
 
-        lm(sampling_rate ~ dist,
-           data = df_sr |>
-             dplyr::filter(Order == ordem & Factor == gaz) |>
-             dplyr::rename(sampling_rate = `Sampling rate`,
-                           dist = `Distance to factor (km)`)) |>
+        dados <- df_sr |>
+          dplyr::filter(Order == ordem & Factor == gaz) |>
+          dplyr::rename(sampling_rate = `Sampling rate`,
+                        dist = `Distance to factor (km)`)
+
+        lm(sampling_rate ~ dist, data = dados) |>
           segmented::selgmented(seg.Z = ~dist, Kmax = 4, type = "bic")
 
       }
