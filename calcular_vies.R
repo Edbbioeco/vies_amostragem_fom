@@ -595,3 +595,15 @@ purrr::imap(
 
 ggsave("mapas_projecao.png",
        height = 15, width = 15)
+
+## Agregação espacial ----
+
+### Criar janela ----
+
+janela <- grade |>
+  dplyr::distinct(grade |> sf::st_geometry(),
+                  .keep_all = TRUE) |>
+  spdep::poly2nb() |>
+  spdep::nb2listw(style = "W")
+
+janela
