@@ -647,3 +647,28 @@ moran_ordem_var <- purrr::imap(
   purrr::flatten()
 
 moran_ordem_var
+
+### Criar data frame com as informações do teste I de Moran ----
+
+tabela_moran <- purrr::imap_dfr(
+  moran_ordem_var,
+  \(teste, nome){
+
+    tibble::tibble(Model = nome,
+                   "Moran's I" = teste$statistic,
+                   "Rank" = teste$parameter,
+                   "p" = teste$p.value)
+
+    },
+  .progress = TRUE) |>
+  dplyr::mutate(p = dplyr::case_when(
+    p < 0.01 ~ "< 0.01",
+    .default = p |> as.character()
+  ),
+                Model = Model |>
+    stringr::str_replace("\n", " ")) |>
+  tidyr::separate(col = Model,
+                  into = c("Order", "Factor"),
+                  sep = "_")
+
+tabela_moran
