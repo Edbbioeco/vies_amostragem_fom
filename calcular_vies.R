@@ -67,7 +67,7 @@ gaz <- purrr::map(
     terra::vect(),
   .progress = TRUE) |>
   setNames(c("Urban areas",
-             "Hidreletric plants",
+             "Hydroeletric plants",
              "Rivers",
              "Highways",
              "Conservation units"))
@@ -527,7 +527,7 @@ purrr::map(
                            "Urban.areas" = "UBA",
                            "Rivers" = "RVS",
                            "Conservation.units" = "CVU",
-                           "Hidreletric.plants" = "HDP")) |>
+                           "Hydroeletric.plants" = "HDP")) |>
                        stringr::str_replace_all("\\+", " + ") |>
                        stringr::str_wrap(width = 25)),
   .progress = TRUE)
