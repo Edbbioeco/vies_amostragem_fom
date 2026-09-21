@@ -368,7 +368,7 @@ modelos_seg <- purrr::map(
              dplyr::filter(Order == ordem & Factor == gaz) |>
              dplyr::rename(sampling_rate = `Sampling rate`,
                            dist = `Distance to factor (km)`)) |>
-          segmented::segmented(seg.Z = ~dist, psi = NA)
+          segmented::selgmented(seg.Z = ~dist, Kmax = 4, type = "bic")
 
       }
     ) |>
@@ -382,13 +382,14 @@ modelos_seg
 
 ### Estatísticas do modelo ----
 
-purrr::imap(
+purrr::imap_dfr(
   modelos_seg,
   \(modelo, nome){
 
-    message(nome)
-
-    modelo |> summary()
+    modelo |>
+      summary() |>
+      broom::tidy() |>
+      mutate(id = nome, .before = 1)
 
     },
   .progress = TRUE)
