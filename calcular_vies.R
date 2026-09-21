@@ -309,3 +309,12 @@ dist_fom <- grade |>
   as.numeric() / 1e3
 
 dist_fom
+
+### Valores médios das estimativas do modelo ----
+
+medias_vies <- purrr::map(
+  modelos_vies,
+  ~.x$bias_estimate |> colMeans(),
+  .progress = TRUE)
+
+medias_vies
