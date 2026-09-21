@@ -351,3 +351,31 @@ df_sr <- purrr::imap_dfr(
 
 df_sr
 
+### Criar modelo segmentado ----
+
+modelos_seg <- purrr::map(
+  c("Crocodylia",
+    "Testudines",
+    "Squamata"),
+  \(ordem){
+
+    purrr::map(
+      df_sr$Factor |> unique(),
+      \(gaz){
+
+        lm(sampling_rate ~ dist,
+           data = df_sr |>
+             dplyr::filter(Order == ordem & Factor == gaz) |>
+             dplyr::rename(sampling_rate = `Sampling rate`,
+                           dist = `Distance to factor (km)`)) |>
+          segmented::segmented(seg.Z = ~dist, psi = NA)
+
+      }
+    ) |>
+      setNames(paste0(ordem, "_",  df_sr$Factor |> unique()))
+
+  },
+  .progress = TRUE) |>
+  purrr::flatten()
+
+modelos_seg
