@@ -517,10 +517,13 @@ raster_proj
 
 purrr::map(
   raster_proj,
-  ~.x |>
+  ~.x %>%
     terra::set.names(. |>
                        terra::names() |>
-                       stringr::str_replace("_", " ")),
+                       stringr::str_replace_all("_", " ") |>
+                       stringr::str_replace_all("\\+", " + ") |>
+                       stringr::str_replace_all("\\.", " ") |>
+                       stringr::str_wrap(width = 35)),
   .progress = TRUE)
 
 raster_proj
