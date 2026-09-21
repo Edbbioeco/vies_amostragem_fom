@@ -427,14 +427,15 @@ sts_dist_davies <- purrr::pmap_dfr(
       dplyr::select(-c(4, 5)) |>
       dplyr::mutate(Model = nome |>
                       stringr::str_replace("\\.", " "),
-                    .before = 1) |>
+                    .before = 1,
+                    M = M |> round(2)) |>
       dplyr::relocate(`N breaks`, .before = `p value`) |>
       dplyr::mutate(`p value` = dplyr::case_when(
 
         `p value` < 0.01 ~ "< 0.01",
         .default = `p value` |> as.character()
       ),
-                    `Distance` = quebra$psi[1, 2]) |>
+                    `Distance` = quebra$psi[1, 2] |> round(2)) |>
       tidyr::separate(col = Model,
                       into = c("Order", "Factor"),
                       sep = "_")
