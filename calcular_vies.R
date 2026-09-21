@@ -109,6 +109,33 @@ fom_raster |> plot()
 
 ## Calcular viés por ordem ----
 
+utils::assignInNamespace(
+  ".DecimalPlaces",
+  function(x){
+
+    if(abs(x - round(x)) < 1e-9){
+
+      return(0)
+
+    }
+
+    partes <- x |>
+      format(scientific = FALSE, digits = 15) |>
+      sub("0+$", "", x = _) |>
+      strsplit(".", fixed = TRUE) |>
+      purrr::pluck(1)
+
+    if(length(partes) < 2){
+
+      return(0)
+
+    }
+
+    partes[[2]] |> nchar()
+
+  },
+  ns = "sampbias")
+
 vies_ordens <- purrr::map(
   c("Crocodylia", "Testudines", "Squamata"),
   purrr::in_parallel(
