@@ -564,7 +564,7 @@ purrr::imap(
       scale_fill_viridis_c(na.value = "transparent",
                            guide = guide_colourbar(
                              title.hjust = 0.5,
-                             barheight = 15,
+                             barheight = 12,
                              frame.colour = "black",
                              ticks.colour = "black",
                              ticks.linewidth = 0.5)) +
@@ -588,5 +588,6 @@ purrr::imap(
     },
   .progress = TRUE) |>
   patchwork::wrap_plots() +
-  ggview::canvas(height = 8, width = 20)
+  patchwork::plot_layout(ncol = 2) +
+  ggview::canvas(height = 15, width = 15)
 
