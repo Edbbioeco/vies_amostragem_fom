@@ -351,6 +351,36 @@ df_sr <- purrr::imap_dfr(
 
 df_sr
 
+### Criar modelos dos efeitos de segmentação ----
+
+modelos_seg <- purrr::map(
+  c("Crocodylia",
+    "Testudines",
+    "Squamata"),
+  \(ordem){
+
+    purrr::map(
+      df_sr$Factor |> unique(),
+      \(gaz){
+
+        dados <- df_sr |>
+          dplyr::filter(Order == ordem & Factor == gaz) |>
+          dplyr::rename(sampling_rate = `Sampling rate`,
+                        dist = `Distance to factor (km)`)
+
+        lm(sampling_rate ~ dist, data = dados) |>
+          segmented::davies.test(seg.Z = ~dist)
+
+      }
+    ) |>
+      setNames(paste0(ordem, "_",  df_sr$Factor |> unique()))
+
+  },
+  .progress = TRUE) |>
+  purrr::flatten()
+
+modelos_seg
+
 ### Criar modelo segmentado ----
 
 modelos_seg <- purrr::map(
@@ -394,3 +424,4 @@ purrr::imap(
 
     },
   .progress = TRUE)
+
