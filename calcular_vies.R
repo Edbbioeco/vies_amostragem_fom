@@ -368,7 +368,8 @@ modelos_seg <- purrr::map(
           dplyr::rename(sampling_rate = `Sampling rate`,
                         dist = `Distance to factor (km)`)
 
-        lm(sampling_rate ~ dist, data = dados)
+        lm(sampling_rate ~ dist, data = dados) |>
+          segmented::selgmented(seg.Z = ~dist, Kmax = 4, type = "bic")
 
       }
     ) |>
