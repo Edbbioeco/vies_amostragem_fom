@@ -24,6 +24,8 @@ library(segmented)
 
 library(tidyterra)
 
+library(patchwork)
+
 library(spdep)
 
 # Registros de ocorrência ----
