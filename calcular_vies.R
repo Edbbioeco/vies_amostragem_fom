@@ -379,3 +379,16 @@ modelos_seg <- purrr::map(
   purrr::flatten()
 
 modelos_seg
+
+### Estatísticas do modelo ----
+
+purrr::imap(
+  modelos_seg,
+  \(modelo, nome){
+
+    message(nome)
+
+    modelo |> summary()
+
+    },
+  .progress = TRUE)
