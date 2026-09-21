@@ -332,7 +332,7 @@ df_sr <- purrr::imap_dfr(
   \(medias, ordem){
 
     purrr::map(
-      5:10,
+      5:9,
       \(vetor){
 
         nome <- medias[vetor] |> names()
@@ -350,3 +350,4 @@ df_sr <- purrr::imap_dfr(
   .progress = TRUE)
 
 df_sr
+
