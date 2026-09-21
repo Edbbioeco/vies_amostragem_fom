@@ -369,7 +369,7 @@ modelos_seg <- purrr::map(
                         dist = `Distance to factor (km)`)
 
         lm(sampling_rate ~ dist, data = dados) |>
-          segmented::davies.test(seg.Z = ~dist, k = 2)
+          segmented::davies.test(seg.Z = ~dist, k = 10)
 
       }
     ) |>
@@ -399,7 +399,7 @@ modelos_quebra <- purrr::map(
                         dist = `Distance to factor (km)`)
 
         lm(sampling_rate ~ dist, data = dados) |>
-          segmented::selgmented(seg.Z = ~dist, Kmax = 4, type = "bic")
+          segmented::selgmented(seg.Z = ~dist, Kmax = 10, type = "bic")
 
       }
     ) |>
