@@ -677,7 +677,9 @@ tabela_moran
 
 tabela_moran_flex <- tabela_moran |>
   flextable::flextable() |>
-  flextable::align(align = "center", part = "all")
+  flextable::align(align = "center", part = "all") |>
+  flextable::width(j = 2, width = 2) |>
+  flextable::width(j = 3, width = 1)
 
 tabela_moran_flex
 
