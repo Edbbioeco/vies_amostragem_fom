@@ -685,3 +685,10 @@ tabela_moran_flex
 
 tabela_moran_flex |>
   flextable::save_as_docx(path = "tabela_moran.docx")
+
+## Calcular Moran Médio por ordem ----
+
+tabela_moran |>
+  dplyr::summarise(Media = `Moran's I` |> mean() |> round(2),
+                   sd = `Moran's I` |> sd() |> round(2),
+                   .by = Order)
