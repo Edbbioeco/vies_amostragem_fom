@@ -668,7 +668,7 @@ tabela_moran <- purrr::imap_dfr(
                 Model = Model |>
     stringr::str_replace("\n", " ")) |>
   tidyr::separate(col = Model,
-                  into = c("Order", "Factor"),
+                  into = c("Order", "Factor interaction"),
                   sep = "_")
 
 tabela_moran
