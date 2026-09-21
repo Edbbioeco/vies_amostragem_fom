@@ -524,3 +524,21 @@ purrr::map(
   .progress = TRUE)
 
 raster_proj
+
+### Visualizar ----
+
+purrr::imap(
+  raster_proj,
+  \(raster, ordem){
+
+    ggplot() +
+      tidyterra::geom_spatraster(data = raster |>
+                                   tidyterra::select(
+                                     -dplyr::contains(c("percent",
+                                                        "occ")))) +
+      scale_fill_viridis_c(na.value = "transparent") +
+      facet_wrap(~lyr) +
+      labs(title = ordem)
+
+    },
+  .progress = TRUE)
