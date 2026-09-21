@@ -291,3 +291,21 @@ df_pesos |>
   ggview::canvas(height = 10, width = 12)
 
 ggsave(filename = "grafico_distribuição_pesos.png", height = 10, width = 12)
+
+## Taxa de amostragem por MCMC ----
+
+### Maior distância possível dentro do CEP ----
+
+dist_fom <- grade |>
+  sf::st_boundary() |>
+  sf::st_cast("POINT") |>
+  sf::st_coordinates() |>
+  as.data.frame() |>
+  dplyr::arrange(dplyr::desc(Y)) |>
+  dplyr::slice(c(1, dplyr::n())) |>
+  sf::st_as_sf(coords = c(1:2), crs = 4674) |>
+  sf::st_distance() |>
+  max() |>
+  as.numeric() / 1e3
+
+dist_fom
