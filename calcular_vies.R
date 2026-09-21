@@ -318,3 +318,9 @@ medias_vies <- purrr::map(
   .progress = TRUE)
 
 medias_vies
+
+### Criar vetor de distâncias ----
+
+dist_seq <- seq(0, dist_fom |> as.numeric(), length.out = 1000)
+
+dist_seq
