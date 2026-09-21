@@ -369,7 +369,7 @@ modelos_seg <- purrr::map(
                         dist = `Distance to factor (km)`)
 
         lm(sampling_rate ~ dist, data = dados) |>
-          segmented::davies.test(seg.Z = ~dist)
+          segmented::davies.test(seg.Z = ~dist, k = 2)
 
       }
     ) |>
