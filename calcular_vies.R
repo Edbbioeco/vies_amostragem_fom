@@ -444,3 +444,13 @@ sts_dist_davies <- purrr::pmap_dfr(
 
 sts_dist_davies
 
+### Tabela flextable ----
+
+sts_dist_davies_flex <- sts_dist_davies |>
+  flextable::flextable() |>
+  flextable::align(align = "center", part = "all")
+
+sts_dist_davies_flex
+
+sts_dist_davies_flex |>
+  flextable::save_as_docx(path = "sts_dist_davies.docx")
