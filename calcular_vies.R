@@ -591,3 +591,5 @@ purrr::imap(
   patchwork::plot_layout(ncol = 2) +
   ggview::canvas(height = 15, width = 15)
 
+ggsave("mapas_projecao.png",
+       height = 15, width = 15)
