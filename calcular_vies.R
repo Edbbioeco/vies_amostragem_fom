@@ -520,10 +520,14 @@ purrr::map(
   ~.x %>%
     terra::set.names(. |>
                        terra::names() |>
-                       stringr::str_replace_all("_", " ") |>
+                       stringr::str_replace_all(
+                         c("Highways" = "HGW",
+                           "Urban.areas" = "UBA",
+                           "Rivers" = "RVS",
+                           "Conservation.units" = "CVU",
+                           "Hidreletric.plants" = "HDP")) |>
                        stringr::str_replace_all("\\+", " + ") |>
-                       stringr::str_replace_all("\\.", " ") |>
-                       stringr::str_wrap(width = 35)),
+                       stringr::str_wrap(width = 25)),
   .progress = TRUE)
 
 raster_proj
