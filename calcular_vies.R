@@ -411,17 +411,36 @@ modelos_quebra <- purrr::map(
 
 modelos_quebra
 
-### Estatísticas do modelo ----
+### Estatísticas dos modelos ----
 
-purrr::imap(
-  modelos_seg,
-  \(modelo, nome){
+sts_dist_davies <- purrr::pmap_dfr(
+  list(modelos_seg,
+       modelos_quebra,
+       modelos_seg |> names()),
+  \(seg, quebra, nome){
 
-    message(nome)
+    seg |>
+      broom::tidy() |>
+      dplyr::rename("M" = 1,
+                    "p value" = 2,
+                    "N breaks" = 3) |>
+      dplyr::select(-c(4, 5)) |>
+      dplyr::mutate(Model = nome |>
+                      stringr::str_replace("\\.", " "),
+                    .before = 1) |>
+      dplyr::relocate(`N breaks`, .before = `p value`) |>
+      dplyr::mutate(`p value` = dplyr::case_when(
 
-    modelo |>
-      summary()
+        `p value` < 0.01 ~ "< 0.01",
+        .default = `p value` |> as.character()
+      ),
+                    `Distance` = quebra$psi[1, 2]) |>
+      tidyr::separate(col = Model,
+                      into = c("Order", "Factor"),
+                      sep = "_")
 
-    },
+  },
   .progress = TRUE)
+
+sts_dist_davies
 
