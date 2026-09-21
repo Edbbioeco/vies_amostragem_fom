@@ -672,3 +672,14 @@ tabela_moran <- purrr::imap_dfr(
                   sep = "_")
 
 tabela_moran
+
+### Tabela flextable ----
+
+tabela_moran_flex <- tabela_moran |>
+  flextable::flextable() |>
+  flextable::align(align = "center", part = "all")
+
+tabela_moran_flex
+
+tabela_moran_flex |>
+  flextable::save_as_docx(path = "tabela_moran.docx")
