@@ -383,7 +383,7 @@ modelos_seg
 
 ### Criar modelo segmentado ----
 
-modelos_seg <- purrr::map(
+modelos_quebra <- purrr::map(
   c("Crocodylia",
     "Testudines",
     "Squamata"),
@@ -409,7 +409,7 @@ modelos_seg <- purrr::map(
   .progress = TRUE) |>
   purrr::flatten()
 
-modelos_seg
+modelos_quebra
 
 ### Estatísticas do modelo ----
 
