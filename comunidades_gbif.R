@@ -54,7 +54,6 @@ ggplot() +
 
 gbif_sf_fom <- gbif_sf |>
   sf::st_intersection(grade |>
-                        dplyr::rename("geometry" = 32) |>
                         dplyr::summarise(geometry = geometry |>
                                            sf::st_union()))
 
