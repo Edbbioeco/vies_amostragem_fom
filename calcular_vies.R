@@ -357,11 +357,14 @@ df_pesos |>
   dplyr::mutate(Ordem = Ordem |>
                   forcats::fct_relevel(c("Crocodylia",
                                          "Testudines",
-                                         "Squamata"))) |>
-  ggplot(aes(Factor, Weight)) +
+                                         "Squamata")),
+                Factor = tidytext::reorder_within(Factor, Weight, Ordem)) |>
+  ggplot(aes(Weight, Factor)) +
   ggbeeswarm::geom_quasirandom() +
-  facet_wrap(~Ordem, ncol = 1, scales = "free_y") +
-  labs(x = "Gazetteer") +
+  facet_wrap(~Ordem, ncol = 1, scales = "free") +
+  tidytext::scale_y_reordered() +
+  scale_x_continuous() +
+  labs(y = "Gazetteer") +
   theme_bw() +
   theme(axis.text = element_text(size = 20, color = "black"),
         axis.text.x = element_text(size = 15, color = "black"),
