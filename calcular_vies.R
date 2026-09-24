@@ -588,9 +588,9 @@ df_sr |>
                                         color = "black"),
         plot.title = element_text(size = 20, color = "black"),
         plot.subtitle = element_text(size = 17.5, color = "black")) +
-  ggview::canvas(height = 10, width = 12)
+  ggview::canvas(height = 12, width = 12)
 
-ggsave(filename = "grafico_sampling_rate.png", height = 10, width = 12)
+ggsave(filename = "grafico_sampling_rate.png", height = 12, width = 12)
 
 ## Projeção espacial ----
 
