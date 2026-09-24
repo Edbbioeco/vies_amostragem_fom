@@ -16,6 +16,8 @@ library(broom)
 
 library(flextable)
 
+library(tidytext)
+
 library(ggbeeswarm)
 
 library(ggview)
