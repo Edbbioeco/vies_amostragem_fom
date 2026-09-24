@@ -365,7 +365,6 @@ df_pesos |>
   ggbeeswarm::geom_quasirandom() +
   facet_wrap(~Ordem, ncol = 1, scales = "free") +
   tidytext::scale_y_reordered() +
-  scale_x_continuous() +
   labs(y = "Gazetteer") +
   theme_bw() +
   theme(axis.text = element_text(size = 20, color = "black"),
@@ -380,7 +379,8 @@ df_pesos |>
         panel.background = element_rect(linewidth = 1,
                                         color = "black"),
         plot.title = element_text(size = 20, color = "black"),
-        plot.subtitle = element_text(size = 17.5, color = "black")) +
+        plot.subtitle = element_text(size = 17.5, color = "black"),
+        plot.margin = margin(t = 5, r = 15, b = 5, l = 5)) +
   ggview::canvas(height = 10, width = 12)
 
 ggsave(filename = "grafico_distribuição_pesos.png", height = 10, width = 12)
