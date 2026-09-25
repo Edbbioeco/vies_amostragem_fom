@@ -98,14 +98,10 @@ registros <- purrr::map_dfr(
                                   "Echinanthera melanostigma",
                                   "Erythrolamprus aesculapii",
                                   "Erythrolamprus breviceps",
-                                  "Erythrolamprus miliaris",
-                                  "Erythrolamprus poecilogyrus",
-                                  "Erythrolamprus typhlus",
                                   "Helicops leopardinus",
                                   "Leptodeira annulata",
                                   "Phalotris lativittatus",
                                   "Thamnodynastes pallidus",
-                                  "Micrurus frontalis",
                                   "Micrurus lemniscatus",
                                   "Chelonoidis carbonarius"))
 
