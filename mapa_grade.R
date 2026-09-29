@@ -31,6 +31,14 @@ ggplot() +
 
 continentes <- rnaturalearth::ne_countries()
 
+### Visualizar ----
+
+continentes
+
+ggplot() +
+  geom_sf(data = continentes, color = "black") +
+  geom_sf(data = br, color = "black", fill = "white")
+
 ## FOM ----
 
 ### Importar ----
