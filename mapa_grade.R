@@ -24,3 +24,9 @@ br
 
 ggplot() +
   geom_sf(data = br, color = "black")
+
+## FOM ----
+
+### Importar ----
+
+fom <- sf::st_read("fom.shp")
