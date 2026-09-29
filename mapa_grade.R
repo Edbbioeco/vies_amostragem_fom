@@ -4,6 +4,8 @@ library(geobr)
 
 library(tidyverse)
 
+library(rnaturalearth)
+
 library(sf)
 
 library(cowplot)
