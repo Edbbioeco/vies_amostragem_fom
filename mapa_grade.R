@@ -89,7 +89,9 @@ insert_map <- ggplot() +
             alpha = 0.3,
             linewidth = 0.75) +
   theme_void() +
-  theme(panel.border = element_rect(color = "black", linewidth = 1)) +
+  theme(panel.border = element_rect(color = "black",
+                                    linewidth = 1),
+        panel.background = element_rect(fill = "white")) +
   ggview::canvas(height = 10, width = 10)
 
 insert_map
@@ -149,3 +151,6 @@ mapa_geral |>
                      height = 0.3,
                      width = 0.3) +
   ggview::canvas(height = 10, width = 10)
+
+ggsave(filename = "mapa_grid.png",
+       height = 10, width = 10)
