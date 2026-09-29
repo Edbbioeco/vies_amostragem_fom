@@ -103,7 +103,8 @@ registros <- purrr::map_dfr(
                                   "Phalotris lativittatus",
                                   "Thamnodynastes pallidus",
                                   "Micrurus lemniscatus",
-                                  "Chelonoidis carbonarius"))
+                                  "Chelonoidis carbonarius")) |>
+  dplyr::distinct(decimalLongitude, decimalLatitude, .keep_all = TRUE)
 
 ## Visualizar ----
 
