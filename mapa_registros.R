@@ -116,7 +116,8 @@ registros <- purrr::map_dfr(
                                   "Thamnodynastes pallidus",
                                   "Micrurus frontalis",
                                   "Micrurus lemniscatus",
-                                  "Chelonoidis carbonarius"))
+                                  "Chelonoidis carbonarius")) |>
+  dplyr::distinct(Species, decimalLongitude, decimalLatitude, .keep_all = TRUE)
 
 ### Visualizar ----
 
