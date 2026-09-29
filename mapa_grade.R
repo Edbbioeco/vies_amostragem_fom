@@ -93,3 +93,16 @@ insert_map <- ggplot() +
   ggview::canvas(height = 10, width = 10)
 
 insert_map
+
+### Mapa principal ----
+
+ggplot() +
+  geom_sf(data = continentes, color = "black", fill = "gray") +
+  geom_sf(data = br, color = "black", fill = "white") +
+  geom_sf(data = fom, color = "forestgreen", fill = "forestgreen") +
+  geom_sf(data = br, color = "black", fill = "transparent") +
+  coord_sf(xlim = c(-58.5, -48.65728),
+           ylim = c(-30.36529, -23.35842)) +
+  theme_bw() +
+  theme(panel.border = element_rect(color = "black", linewidth = 1)) +
+  ggview::canvas(height = 10, width = 10)
