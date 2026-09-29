@@ -138,3 +138,14 @@ mapa_geral <- ggplot() +
   ggview::canvas(height = 10, width = 10)
 
 mapa_geral
+
+## Mapa final ----
+
+mapa_geral |>
+  cowplot::ggdraw() +
+  cowplot::draw_plot(insert_map,
+                     x = 0.1,
+                     y = 0.475,
+                     height = 0.3,
+                     width = 0.3) +
+  ggview::canvas(height = 10, width = 10)
