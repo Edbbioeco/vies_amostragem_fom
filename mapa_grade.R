@@ -18,7 +18,7 @@ library(ggview)
 
 ### Importar ----
 
-br <- geobr::read_state(year = 2025)
+br <- rnaturalearth::ne_states(country = "Brazil")
 
 ### Visualizar ----
 
