@@ -25,6 +25,12 @@ br
 ggplot() +
   geom_sf(data = br, color = "black")
 
+## Continentes ----
+
+### Importar ----
+
+continentes <- rnaturalearth::ne_countries()
+
 ## FOM ----
 
 ### Importar ----
