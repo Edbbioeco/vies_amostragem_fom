@@ -96,13 +96,45 @@ insert_map
 
 ### Mapa principal ----
 
-ggplot() +
-  geom_sf(data = continentes, color = "black", fill = "gray") +
-  geom_sf(data = br, color = "black", fill = "white") +
-  geom_sf(data = fom, color = "forestgreen", fill = "forestgreen") +
-  geom_sf(data = br, color = "black", fill = "transparent") +
+mapa_final <- ggplot() +
+  geom_sf(data = continentes,
+          aes(color = "South America", fill = "South America"),
+          linewidth = 1) +
+  geom_sf(data = br,
+          aes(color = "Brazil", fill = "Brazil"),
+          linewidth = 1) +
+  geom_sf(data = fom,
+          aes(color = "AMF", fill = "AMF")) +
+  geom_sf(data = grade,
+          aes(color = "Grid", fill = "Grid"),
+          linewidth = 0.75) +
+  geom_sf(data = br, color = "black", fill = "transparent", linewidth = 1) +
+  scale_color_manual(values = c("South America" = "black",
+                                "Brazil" = "black",
+                                "AMF" = "forestgreen",
+                                "Grid" = "darkred"),
+                     breaks = c("South America",
+                                "Brazil",
+                                "AMF",
+                                "Grid")) +
+  scale_fill_manual(values = c("South America" = "grey",
+                               "Brazil" = "white",
+                               "AMF" = "forestgreen",
+                               "Grid" = "transparent"),
+                     breaks = c("South America",
+                                "Brazil",
+                                "AMF",
+                                "Grid")) +
   coord_sf(xlim = c(-58.5, -48.65728),
-           ylim = c(-30.36529, -23.35842)) +
+           ylim = c(-30.36529, -23.35842),
+           label_graticule = "NSEW") +
+  labs(fill = NULL,
+       color = NULL) +
   theme_bw() +
-  theme(panel.border = element_rect(color = "black", linewidth = 1)) +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        panel.border = element_rect(color = "black", linewidth = 1)) +
   ggview::canvas(height = 10, width = 10)
+
+mapa_final
