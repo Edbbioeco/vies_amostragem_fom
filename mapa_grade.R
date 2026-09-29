@@ -96,7 +96,7 @@ insert_map
 
 ### Mapa principal ----
 
-mapa_final <- ggplot() +
+mapa_geral <- ggplot() +
   geom_sf(data = continentes,
           aes(color = "South America", fill = "South America"),
           linewidth = 1) +
@@ -137,4 +137,4 @@ mapa_final <- ggplot() +
         panel.border = element_rect(color = "black", linewidth = 1)) +
   ggview::canvas(height = 10, width = 10)
 
-mapa_final
+mapa_geral
