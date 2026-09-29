@@ -104,7 +104,7 @@ registros <- purrr::map_dfr(
                                   "Thamnodynastes pallidus",
                                   "Micrurus lemniscatus",
                                   "Chelonoidis carbonarius")) |>
-  dplyr::distinct(decimalLongitude, decimalLatitude, .keep_all = TRUE)
+  dplyr::distinct(Species, decimalLongitude, decimalLatitude, .keep_all = TRUE)
 
 ## Visualizar ----
 
