@@ -69,3 +69,26 @@ ggplot() +
   geom_sf(data = fom, color = "forestgreen", fill = "forestgreen") +
   geom_sf(data = grade, color = "black", fill = "transparent")
 
+# Mpas ----
+
+## Insert map ----
+
+insert_map <- ggplot() +
+  geom_sf(data = continentes, color = "black", fill = "gray") +
+  geom_sf(data = br, color = "black", fill = "white") +
+  geom_sf(data = fom, color = "forestgreen", fill = "forestgreen") +
+  geom_sf(data = br, color = "black", fill = "transparent") +
+  coord_sf(xlim = c(-72.98681, -35),
+           ylim = c(-32.75108, 4.26962)) +
+  geom_rect(aes(xmin = -54.04717,
+                xmax = -48.65728,
+                ymin = -30.36529,
+                ymax = -23.35842),
+            color = "darkred",
+            fill = "red",
+            alpha = 0.3,
+            linewidth = 0.75) +
+  theme_void() +
+  theme(panel.border = element_rect(color = "black"))
+
+insert_map
