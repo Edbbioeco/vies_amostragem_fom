@@ -89,6 +89,7 @@ insert_map <- ggplot() +
             alpha = 0.3,
             linewidth = 0.75) +
   theme_void() +
-  theme(panel.border = element_rect(color = "black"))
+  theme(panel.border = element_rect(color = "black", linewidth = 1)) +
+  ggview::canvas(height = 10, width = 10)
 
 insert_map
