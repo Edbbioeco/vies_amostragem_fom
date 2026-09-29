@@ -148,8 +148,8 @@ mapa_geral |>
   cowplot::draw_plot(insert_map,
                      x = 0.1,
                      y = 0.475,
-                     height = 0.3,
-                     width = 0.3) +
+                     height = 0.275,
+                     width = 0.275) +
   ggview::canvas(height = 10, width = 10)
 
 ggsave(filename = "mapa_grid.png",
