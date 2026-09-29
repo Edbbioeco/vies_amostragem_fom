@@ -38,3 +38,9 @@ fom
 ggplot() +
   geom_sf(data = br, color = "black") +
   geom_sf(data = fom, color = "forestgreen", fill = "forestgreen")
+
+## Grade ----
+
+### Importar ----
+
+grade <- sf::st_read("grade_fom.shp")
