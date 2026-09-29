@@ -31,7 +31,7 @@ ggplot() +
 
 ### Importar ----
 
-continentes <- rnaturalearth::ne_countries()
+continentes <- rnaturalearth::ne_countries(scale = "large")
 
 ### Visualizar ----
 
