@@ -277,6 +277,15 @@ df_pesos <- purrr::imap_dfr(
 
 df_pesos
 
+### Calcular média de pesos por e sem facotr ----
+
+#### Sem fator ----
+
+df_pesos |>
+  dplyr::summarise(media = Weight |> mean() |> round(2),
+                   sd = Weight |> sd() |> round(2),
+                   .by = Ordem)
+
 ### Criar modelo ANOVA ----
 
 anovas_ordem <- purrr::map(
