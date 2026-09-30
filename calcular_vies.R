@@ -286,6 +286,16 @@ df_pesos |>
                    sd = Weight |> sd() |> round(2),
                    .by = Ordem)
 
+#### Com fator ----
+
+media_pesos_fatores <- df_pesos |>
+  dplyr::summarise(media = Weight |> mean() |> round(2),
+                   sd = Weight |> sd() |> round(2),
+                   .by = c(Ordem, Factor)) |>
+  dplyr::rename("Weigth" = media)
+
+media_pesos_fatores
+
 ### Criar modelo ANOVA ----
 
 anovas_ordem <- purrr::map(
