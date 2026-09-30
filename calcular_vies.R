@@ -292,7 +292,7 @@ media_pesos_fatores <- df_pesos |>
   dplyr::summarise(media = Weight |> mean() |> round(2),
                    sd = Weight |> sd() |> round(2),
                    .by = c(Ordem, Factor)) |>
-  dplyr::rename("Weigth" = media)
+  dplyr::rename("Weight" = media)
 
 media_pesos_fatores
 
