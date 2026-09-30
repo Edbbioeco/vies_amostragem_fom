@@ -598,7 +598,7 @@ df_sr |>
              linetype = "dashed",
              linewidth = 1) +
   scale_color_manual(values = c("forestgreen",
-                                "royalblue",
+                                "black",
                                 "orange",
                                 "blue",
                                 "brown")) +
