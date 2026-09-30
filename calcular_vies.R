@@ -585,6 +585,14 @@ sts_dist_davies |>
                    sd = Distance |> sd() |> round(2),
                    .by = Order)
 
+#### Por fator ----
+
+sts_dist_davies |>
+  dplyr::summarise(media = Distance |> mean() |> round(2),
+                   sd = Distance |> sd() |> round(7),
+                   .by = Factor) |>
+  dplyr::arrange(media)
+
 ### Tabela flextable ----
 
 sts_dist_davies_flex <- sts_dist_davies |>
