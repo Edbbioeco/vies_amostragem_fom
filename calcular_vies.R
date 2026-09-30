@@ -384,6 +384,16 @@ df_pesos |>
                 Factor = tidytext::reorder_within(Factor, Weight, Ordem)) |>
   ggplot(aes(Weight, Factor)) +
   ggbeeswarm::geom_quasirandom() +
+  geom_point(data = media_pesos_fatores,
+             aes(Weight, Factor),
+             size = 2.5,
+             color = "red") +
+  geom_errorbar(data = media_pesos_fatores,
+                aes(xmin = Weight - sd,
+                    xmax = Weight + sd,
+                    y = Factor),
+                linewidth = 1,
+                color = "red") +
   facet_wrap(~Ordem, ncol = 1, scales = "free") +
   tidytext::scale_y_reordered() +
   labs(y = "Gazetteer") +
