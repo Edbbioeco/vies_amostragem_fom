@@ -292,7 +292,12 @@ media_pesos_fatores <- df_pesos |>
   dplyr::summarise(media = Weight |> mean() |> round(2),
                    sd = Weight |> sd() |> round(2),
                    .by = c(Ordem, Factor)) |>
-  dplyr::rename("Weight" = media)
+  dplyr::rename("Weight" = media) |>
+  dplyr::mutate(Ordem = Ordem |>
+                  forcats::fct_relevel(c("Crocodylia",
+                                         "Testudines",
+                                         "Squamata")),
+                Factor = tidytext::reorder_within(Factor, Weight, Ordem))
 
 media_pesos_fatores
 
