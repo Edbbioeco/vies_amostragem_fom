@@ -475,6 +475,15 @@ df_sr <- purrr::imap_dfr(
 
 df_sr
 
+### Média do Sampling rate ----
+
+#### Sem fator ----
+
+df_sr |>
+  dplyr::summarise(media = `Sampling rate` |> mean() |> round(3),
+                   sd = `Sampling rate` |> sd() |> round(3),
+                   .by = Order)
+
 ### Criar modelos dos efeitos de segmentação ----
 
 modelos_seg <- purrr::map(
