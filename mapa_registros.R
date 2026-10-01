@@ -155,7 +155,7 @@ ggplot() +
           aes(color = "Brazil", fill = "Brazil"),
           linewidth = 1) +
   geom_sf(data = fom,
-          aes(color = "MOF", fill = "MOF")) +
+          aes(color = "AMF", fill = "AMF")) +
   geom_sf(data = br, color = "black", fill = "transparent",
           linewidth = 1) +
   geom_sf(data = registros_sf,
@@ -164,13 +164,13 @@ ggplot() +
           size = 1) +
   facet_wrap(~Order, ncol = 2) +
   scale_color_manual(values = c("Brazil" = "black",
-                                "MOF" = "forestgreen",
+                                "AMF" = "forestgreen",
                                 "Species records" = "black"),
-                     breaks = c("Brazil", "MOF", "Species records")) +
+                     breaks = c("Brazil", "AMF", "Species records")) +
   scale_fill_manual(values = c("Brazil" = "gray",
-                               "MOF" = "forestgreen",
+                               "AMF" = "forestgreen",
                                "Species records" = "black"),
-                     breaks = c("Brazil", "MOF", "Species records")) +
+                     breaks = c("Brazil", "AMF", "Species records")) +
   coord_sf(xlim = c(-54.03497, -48.34859),
            ylim = c(-30.25525, -23.36159),
            label_graticule = "NSWE") +
