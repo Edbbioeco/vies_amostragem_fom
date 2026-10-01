@@ -173,10 +173,13 @@ ggplot() +
   labs(color = NULL,
        fill = NULL) +
   theme_bw() +
-  theme(axis.text = element_text(size = 20, color = "black"),
+  theme(axis.text = element_text(size = 10, color = "black"),
         legend.text = element_text(size = 20, color = "black"),
         legend.position = "bottom",
-        panel.border = element_rect(color = "black", linewidth = 1)) +
+        panel.border = element_rect(color = "black", linewidth = 1),
+        strip.text = element_text(size = 15, color = "black"),
+        strip.background = element_rect(color = "black",
+                                        linewidth = 1)) +
   ggview::canvas(height = 10, width = 12)
 
 ## Exportar ----
