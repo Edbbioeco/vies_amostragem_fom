@@ -157,7 +157,7 @@ ggplot() +
   geom_sf(data = registros_sf,
           aes(color = "Species records", fill = "Species records"),
           shape = 21,
-          size = 2) +
+          size = 1) +
   facet_wrap(~Order, ncol = 2) +
   scale_color_manual(values = c("Brazil" = "black",
                                 "FOM" = "forestgreen",
