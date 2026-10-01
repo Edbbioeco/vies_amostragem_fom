@@ -175,7 +175,7 @@ ggplot() +
   theme_bw() +
   theme(axis.text = element_text(size = 10, color = "black"),
         legend.text = element_text(size = 20, color = "black"),
-        legend.position = "bottom",
+        legend.position = c(0.75, 0.25),
         panel.border = element_rect(color = "black", linewidth = 1),
         strip.text = element_text(size = 15, color = "black"),
         strip.background = element_rect(color = "black",
