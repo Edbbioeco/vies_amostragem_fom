@@ -134,7 +134,11 @@ registros_sf <- registros |>
   sf::st_as_sf(coords = paste0("decimal",
                                c("Longitude",
                                  "Latitude")),
-               crs = fom |> sf::st_crs())
+               crs = fom |> sf::st_crs()) |>
+  dplyr::mutate(Order = Order |>
+                  forcats::fct_relevel(c("Crocodylia",
+                                         "Testudines",
+                                         "Squamata")))
 
 registros_sf
 
