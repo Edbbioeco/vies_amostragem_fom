@@ -158,6 +158,7 @@ ggplot() +
           aes(color = "Species records", fill = "Species records"),
           shape = 21,
           size = 2) +
+  facet_wrap(~Order, ncol = 2) +
   scale_color_manual(values = c("Brazil" = "black",
                                 "FOM" = "forestgreen",
                                 "Species records" = "black"),
